@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahayak AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #386890 0%, #152736 100%);
+        }
+
+        .sidebar-item:hover {
+            background: #e2e8f0;
+            transform: translateX(4px);
+        }
+
+        .sidebar-item {
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-item.active {
+            background: #dbeafe;
+            border-left: 3px solid #3b82f6;
+        }
+
+        .grade-checkbox:checked+label {
+            background: #3b82f6;
+            color: white;
+
+        }
+
+        .custom-button {
+            background-color: #152736;
+            color: white;
+            font-weight: 600;
+            padding: 1rem 1.5rem;
+            /* py-4 px-6 */
+            border-radius: 0.75rem;
+            /* rounded-xl */
+            width: 100%;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .custom-button:hover {
+            background-color: #2f5877;
+            transform: scale(1.05);
+        }
+
+        .login-button {
+            background-color: #D9D9DA;
+            color: #374151;
+            /* Equivalent to Tailwind text-gray-700 */
+            font-weight: 600;
+            padding: 1rem 1.5rem;
+            /* py-4 px-6 */
+            border-radius: 0.75rem;
+            /* rounded-xl */
+            width: 100%;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .login-button:hover {
+            background-color: #b0b0b0;
+            transform: scale(1.05);
+        }
+
+        .custom-hover {
+            color: #386890;
+            transition: color 0.2s;
+        }
+
+        .custom-hover:hover {
+            color: #2f5877;
+        }
+    </style>
+
+
+</head>
+
+<body class="bg-gray-50">
+    <!-- Landing Page -->
+    <div id="landingPage" class="min-h-screen gradient-bg flex flex-col">
+        <div class="flex justify-center pt-16 pb-8">
+            <div class="text-center">
+                <h1 class="text-5xl font-bold text-white mb-2">Sahayak AI</h1>
+                <p class="text-blue-100 text-lg">Your AI Teaching Assistant</p>
+            </div>
+        </div>
+
+        <div class="flex-1 flex items-center justify-center px-4">
+            <div class="rounded-2xl shadow-2xl p-12 max-w-md w-full text-center" style="background-color: #F2F2F2;">
+                <div class="mb-8">
+                    <div class="w-20 h-20  rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div>
+                            <img src="Sahayak_AI-removebg-preview.png" alt="Sahayak AI Logo"
+                                class="w-32 h-32 rounded-full object-cover">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <button onclick="showSignUp()" class="custom-button">
+                        Sign Up
+                    </button>
+
+                    <button onclick="showLogin()"
+                        class="login-button text-gray-700 font-semibold py-4 px-6 rounded-xl w-full">
+                        Log In
+                    </button>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center pb-8">
+            <p class="text-blue-100 text-sm">Empowering Teachers in Every Classroom</p>
+        </div>
+    </div>
+
+    <!-- Sign Up Page -->
+    <div id="signUpPage" class="hidden min-h-screen gradient-bg flex items-center justify-center px-4">
+        <div class=" rounded-2xl shadow-2xl p-8 max-w-md w-full" style="background-color: #F2F2F2;">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Create Your Sahayak AI Account</h2>
+            </div>
+
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                    <input type="text"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Enter your name">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <input type="email"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Enter your email">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                    <input type="password"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Create a password">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
+                    <input type="password"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Confirm your password">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Select Board</label>
+                    <select
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option>CBSE</option>
+                        <option>ICSE</option>
+                        <option>State Board</option>
+                    </select>
+                </div>
+
+                <button onclick="showDashboard()" type="button" class="custom-button">
+                    Sign Up
+                </button>
+            </form>
+
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-600">Already have an account?
+                    <button onclick="showLogin()" class="font-medium custom-hover">Log In</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Page -->
+    <div id="loginPage" class="hidden min-h-screen gradient-bg flex items-center justify-center px-4">
+        <div class=" rounded-2xl shadow-2xl p-8 max-w-md w-full" style="background-color: #F2F2F2;">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Welcome Back</h2>
+            </div>
+
+            <form class="space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <input type="email"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Enter your email">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                    <input type="password"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        placeholder="Enter your password">
+                </div>
+
+               <button onclick="showDashboard()" type="button" class="custom-button">
+                    Login
+                </button>
+            </form>
+
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-600">Don't have an account?
+                     <button onclick="showSignUp()" class="font-medium custom-hover">Sign UP</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboard" class="hidden min-h-screen bg-gray-50">
+        <!-- Header -->
+        <header class="bg-white shadow-sm border-b border-gray-200">
+            <div class="flex justify-between items-center px-6 py-4">
+                <div class="flex items-center space-x-3">
+                   <div class="w-20 h-8 flex items-center justify-center">
+                        <div>
+                            <img src="Sahayak_AI-removebg-preview.png" alt="Sahayak AI Logo"
+                                class=" w-20 h-20 object-cover">
+                        </div>
+                    </div>
+                    <h1 class="text-xl font-semibold text-white-800">Sahayak AI</h1>
+                </div>
+
+                <div class="relative">
+                    <button onclick="toggleUserMenu()"
+                        class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center hover:bg-blue-200 transition duration-200">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                    </button>
+
+                    <div id="userMenu"
+                        class="hidden absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 z-50">
+                        <div class="py-2">
+                            <div class="px-4 py-2 border-b border-gray-100">
+                                <p class="text-sm font-medium text-gray-800">Board Selection</p>
+                                <select class="mt-1 w-full text-sm border border-gray-300 rounded px-2 py-1">
+                                    <option>CBSE</option>
+                                    <option>ICSE</option>
+                                    <option>State Board</option>
+                                </select>
+                            </div>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">About Sahayak</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">Help Center</a>
+                            <a href="#" onclick="showLanding()"
+                                class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="flex h-screen">
+            <!-- Left Sidebar -->
+            <div class="w-80 bg-white shadow-sm border-r border-gray-200 overflow-y-auto">
+                <div class="p-4">
+                    <div class="space-y-2">
+                        <div class="sidebar-item active p-3 rounded-lg cursor-pointer flex items-center space-x-3"
+                            onclick="showScreen('chat')">
+                            <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <p class="font-medium text-gray-800">Chat Assistant</p>
+                        </div>
+
+                        <div class="sidebar-item p-3 rounded-lg cursor-pointer flex items-center space-x-3"
+                            onclick="showScreen('worksheet')">
+                            <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <p class="font-medium text-gray-800">Worksheet Generator</p>
+                        </div>
+
+                        <div class="sidebar-item p-3 rounded-lg cursor-pointer flex items-center space-x-3"
+                            onclick="showScreen('game')">
+                            <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-purple-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <p class="font-medium text-gray-800">Game Generator</p>
+                        </div>
+
+                        <div class="sidebar-item p-3 rounded-lg cursor-pointer flex items-center space-x-3"
+                            onclick="showScreen('syllabus')">
+                            <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <p class="font-medium text-gray-800">Syllabus Scheduler</p>
+                        </div>
+
+                        <div class="sidebar-item p-3 rounded-lg cursor-pointer flex items-center space-x-3"
+                            onclick="showScreen('grading')">
+                            <div class="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-orange-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4">
+                                    </path>
+                                </svg>
+                            </div>
+                            <p class="font-medium text-gray-800">Auto Grading</p>
+                        </div>
+
+                        <div class="sidebar-item p-3 rounded-lg cursor-pointer flex items-center space-x-3"
+                            onclick="showScreen('feedback')">
+                            <div class="w-8 h-8 bg-teal-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-teal-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <p class="font-medium text-gray-800">Feedback Assistant</p>
+                        </div>
+
+                        <div class="sidebar-item p-3 rounded-lg cursor-pointer flex items-center space-x-3"
+                            onclick="showScreen('progress')">
+                            <div class="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <p class="font-medium text-gray-800">Student Progress Tracker</p>
+                        </div>
+
+                        <div class="sidebar-item p-3 rounded-lg cursor-pointer flex items-center space-x-3"
+                            onclick="showScreen('connect')">
+                            <div class="w-8 h-8 bg-pink-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-pink-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <p class="font-medium text-gray-800">Teacher Connect</p>
+                        </div>
+
+                        <div class="sidebar-item p-3 rounded-lg cursor-pointer flex items-center space-x-3"
+                            onclick="showScreen('scheduler')">
+                            <div class="w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center">
+                                <svg class="w-4 h-4 text-yellow-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <p class="font-medium text-gray-800">Reminders & Test Scheduler</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="flex-1 flex flex-col">
+                <!-- Chat Screen (Default) -->
+                <div id="chatScreen" class="flex-1 flex flex-col">
+                    <div class="flex-1 overflow-y-auto p-6 space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div
+                                class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="bg-gray-100 max-w-md p-4 rounded-2xl rounded-tl-sm">
+                                <p class="text-sm text-gray-700">Hello! I'm your Sahayak AI Assistant. I can help you
+                                    with worksheets, games, syllabus planning, grading, and much more. What would you
+                                    like to work on today?</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border-t border-gray-200 p-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="flex space-x-2">
+                                <button class="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                        </path>
+                                    </svg>
+                                </button>
+                                <button class="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z">
+                                        </path>
+                                    </svg>
+                                </button>
+                                <button class="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="flex-1 relative">
+                                <input type="text" placeholder="Ask anything to your AI Assistant..."
+                                    class="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <button
+                                class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-xl transition duration-200">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Worksheet Generator Screen -->
+                <div id="worksheetScreen" class="hidden flex-1 p-8">
+                    <div class="max-w-4xl mx-auto">
+                        <h1 class="text-3xl font-bold text-gray-800 mb-8">Multigrade Worksheet Generator</h1>
+
+                        <div class="bg-white rounded-xl shadow-lg p-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Select Grades</h3>
+                                    <div class="grid grid-cols-4 gap-2">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="grade1" class="grade-checkbox hidden">
+                                            <label for="grade1"
+                                                class="w-full text-center py-2 px-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">1</label>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="grade2" class="grade-checkbox hidden">
+                                            <label for="grade2"
+                                                class="w-full text-center py-2 px-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">2</label>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="grade3" class="grade-checkbox hidden">
+                                            <label for="grade3"
+                                                class="w-full text-center py-2 px-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">3</label>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="grade4" class="grade-checkbox hidden">
+                                            <label for="grade4"
+                                                class="w-full text-center py-2 px-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">4</label>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="grade5" class="grade-checkbox hidden">
+                                            <label for="grade5"
+                                                class="w-full text-center py-2 px-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">5</label>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="grade6" class="grade-checkbox hidden">
+                                            <label for="grade6"
+                                                class="w-full text-center py-2 px-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">6</label>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="grade7" class="grade-checkbox hidden">
+                                            <label for="grade7"
+                                                class="w-full text-center py-2 px-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">7</label>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="grade8" class="grade-checkbox hidden">
+                                            <label for="grade8"
+                                                class="w-full text-center py-2 px-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">8</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Select Topics</h3>
+                                    <input type="text"
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-4"
+                                        placeholder="Enter topics (e.g., Addition, Fractions)">
+
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Difficulty Level</h3>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="difficulty" value="easy" class="text-blue-600">
+                                            <span class="ml-2">Easy</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="difficulty" value="medium" class="text-blue-600">
+                                            <span class="ml-2">Medium</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="difficulty" value="hard" class="text-blue-600">
+                                            <span class="ml-2">Hard</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 text-center">
+                                <button
+                                    class="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-200">
+                                    Generate Worksheet
+                                </button>
+                            </div>
+
+                            <div class="mt-8 p-6 bg-gray-50 rounded-lg">
+                                <h4 class="font-semibold text-gray-800 mb-2">Result: Downloadable PDF Preview</h4>
+                                <div class="bg-white border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+                                    <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                        </path>
+                                    </svg>
+                                    <p class="text-gray-500">Generated worksheet will appear here</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Generator Screen -->
+                <div id="gameScreen" class="hidden flex-1 p-8">
+                    <div class="max-w-4xl mx-auto">
+                        <h1 class="text-3xl font-bold text-gray-800 mb-8">Multigrade Game Generator</h1>
+
+                        <div class="bg-white rounded-xl shadow-lg p-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Select Grade Levels</h3>
+                                    <select
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-4">
+                                        <option>Grade 1-2</option>
+                                        <option>Grade 3-5</option>
+                                        <option>Grade 6-8</option>
+                                    </select>
+
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Select Subject</h3>
+                                    <select
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        <option>Mathematics</option>
+                                        <option>Science</option>
+                                        <option>English</option>
+                                        <option>Social Studies</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Choose Game Type</h3>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="gameType" value="quiz" class="text-purple-600">
+                                            <span class="ml-2">Quiz</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="gameType" value="puzzle" class="text-purple-600">
+                                            <span class="ml-2">Puzzle</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="gameType" value="memory" class="text-purple-600">
+                                            <span class="ml-2">Memory Match</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="gameType" value="word" class="text-purple-600">
+                                            <span class="ml-2">Word Game</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-8 text-center">
+                                <button
+                                    class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-200">
+                                    Generate Game
+                                </button>
+                            </div>
+
+                            <div class="mt-8 p-6 bg-gray-50 rounded-lg">
+                                <h4 class="font-semibold text-gray-800 mb-2">Result: Playable Demo + Download Option
+                                </h4>
+                                <div class="bg-white border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+                                    <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                        </path>
+                                    </svg>
+                                    <p class="text-gray-500">Generated game will appear here</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Syllabus Scheduler Screen -->
+                <div id="syllabusScreen" class="hidden flex-1 p-8">
+                    <div class="max-w-6xl mx-auto">
+                        <h1 class="text-3xl font-bold text-gray-800 mb-8">Syllabus Planner</h1>
+
+                        <div class="bg-white rounded-xl shadow-lg p-8">
+                            <div class="mb-6">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Class-wise Schedule Creation</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                    <select
+                                        class="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        <option>Select Class</option>
+                                        <option>Class 1</option>
+                                        <option>Class 2</option>
+                                        <option>Class 3</option>
+                                        <option>Class 4</option>
+                                        <option>Class 5</option>
+                                    </select>
+                                    <select
+                                        class="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        <option>Select Subject</option>
+                                        <option>Mathematics</option>
+                                        <option>Science</option>
+                                        <option>English</option>
+                                        <option>Social Studies</option>
+                                    </select>
+                                    <select
+                                        class="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        <option>Select Term</option>
+                                        <option>Term 1</option>
+                                        <option>Term 2</option>
+                                        <option>Annual</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mb-6">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Drag-and-drop Weekly/Monthly
+                                    Calendar</h3>
+                                <div class="bg-gray-50 rounded-lg p-6">
+                                    <div class="grid grid-cols-7 gap-2 mb-4">
+                                        <div class="text-center font-semibold text-gray-600 py-2">Mon</div>
+                                        <div class="text-center font-semibold text-gray-600 py-2">Tue</div>
+                                        <div class="text-center font-semibold text-gray-600 py-2">Wed</div>
+                                        <div class="text-center font-semibold text-gray-600 py-2">Thu</div>
+                                        <div class="text-center font-semibold text-gray-600 py-2">Fri</div>
+                                        <div class="text-center font-semibold text-gray-600 py-2">Sat</div>
+                                        <div class="text-center font-semibold text-gray-600 py-2">Sun</div>
+                                    </div>
+                                    <div class="grid grid-cols-7 gap-2">
+                                        <div
+                                            class="bg-white border border-gray-200 rounded p-3 h-20 cursor-pointer hover:bg-blue-50">
+                                            <div class="text-sm text-gray-600">1</div>
+                                        </div>
+                                        <div
+                                            class="bg-white border border-gray-200 rounded p-3 h-20 cursor-pointer hover:bg-blue-50">
+                                            <div class="text-sm text-gray-600">2</div>
+                                            <div class="text-xs bg-blue-100 text-blue-800 rounded px-1 mt-1">Chapter 1
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="bg-white border border-gray-200 rounded p-3 h-20 cursor-pointer hover:bg-blue-50">
+                                            <div class="text-sm text-gray-600">3</div>
+                                        </div>
+                                        <div
+                                            class="bg-white border border-gray-200 rounded p-3 h-20 cursor-pointer hover:bg-blue-50">
+                                            <div class="text-sm text-gray-600">4</div>
+                                        </div>
+                                        <div
+                                            class="bg-white border border-gray-200 rounded p-3 h-20 cursor-pointer hover:bg-blue-50">
+                                            <div class="text-sm text-gray-600">5</div>
+                                            <div class="text-xs bg-green-100 text-green-800 rounded px-1 mt-1">Test
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="bg-white border border-gray-200 rounded p-3 h-20 cursor-pointer hover:bg-blue-50">
+                                            <div class="text-sm text-gray-600">6</div>
+                                        </div>
+                                        <div
+                                            class="bg-white border border-gray-200 rounded p-3 h-20 cursor-pointer hover:bg-blue-50">
+                                            <div class="text-sm text-gray-600">7</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <button
+                                    class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-200">
+                                    Save Schedule
+                                </button>
+                                <button
+                                    class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-8 rounded-lg transition duration-200">
+                                    Auto-generate Suggestions
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auto Grading Screen -->
+                <div id="gradingScreen" class="hidden flex-1 p-8">
+                    <div class="max-w-4xl mx-auto">
+                        <h1 class="text-3xl font-bold text-gray-800 mb-8">Auto Grading Tool</h1>
+
+                        <div class="bg-white rounded-xl shadow-lg p-8">
+                            <div class="mb-8">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Upload Answer Sheet Images</h3>
+                                <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
+                                    <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12">
+                                        </path>
+                                    </svg>
+                                    <p class="text-gray-500 mb-2">Drag and drop answer sheets here, or click to browse
+                                    </p>
+                                    <button
+                                        class="bg-orange-100 hover:bg-orange-200 text-orange-700 px-4 py-2 rounded-lg transition duration-200">
+                                        Choose Files
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="mb-8">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Select Grading Scheme</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <select
+                                        class="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        <option>Select Subject</option>
+                                        <option>Mathematics</option>
+                                        <option>Science</option>
+                                        <option>English</option>
+                                    </select>
+                                    <select
+                                        class="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        <option>Select Grade</option>
+                                        <option>Grade 1</option>
+                                        <option>Grade 2</option>
+                                        <option>Grade 3</option>
+                                        <option>Grade 4</option>
+                                        <option>Grade 5</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="text-center mb-8">
+                                <button
+                                    class="bg-orange-600 hover:bg-orange-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-200">
+                                    Analyze & Grade
+                                </button>
+                            </div>
+
+                            <div class="p-6 bg-gray-50 rounded-lg">
+                                <h4 class="font-semibold text-gray-800 mb-4">Output: Student Scores + Suggestions</h4>
+                                <div class="bg-white rounded-lg p-4">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <h5 class="font-medium text-gray-700 mb-2">Student Scores</h5>
+                                            <div class="space-y-2">
+                                                <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
+                                                    <span class="text-sm">Student 1</span>
+                                                    <span class="text-sm font-semibold text-green-600">85/100</span>
+                                                </div>
+                                                <div class="flex justify-between items-center p-2 bg-gray-50 rounded">
+                                                    <span class="text-sm">Student 2</span>
+                                                    <span class="text-sm font-semibold text-yellow-600">72/100</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h5 class="font-medium text-gray-700 mb-2">Suggestions</h5>
+                                            <div class="text-sm text-gray-600 space-y-1">
+                                                <p>• Focus on multiplication tables</p>
+                                                <p>• Review fraction concepts</p>
+                                                <p>• Practice word problems</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feedback Assistant Screen -->
+                <div id="feedbackScreen" class="hidden flex-1 p-8">
+                    <div class="max-w-4xl mx-auto">
+                        <h1 class="text-3xl font-bold text-gray-800 mb-8">Feedback for Students</h1>
+
+                        <div class="bg-white rounded-xl shadow-lg p-8">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Class & Student Selection</h3>
+                                    <select
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-4">
+                                        <option>Select Class</option>
+                                        <option>Class 1</option>
+                                        <option>Class 2</option>
+                                        <option>Class 3</option>
+                                        <option>Class 4</option>
+                                        <option>Class 5</option>
+                                    </select>
+                                    <select
+                                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        <option>Select Student</option>
+                                        <option>Aarav Sharma</option>
+                                        <option>Priya Patel</option>
+                                        <option>Rohan Kumar</option>
+                                        <option>Ananya Singh</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Recent Test Performance</h3>
+                                    <div class="space-y-3">
+                                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                            <span class="text-sm">Mathematics Test</span>
+                                            <span class="text-sm font-semibold text-green-600">85%</span>
+                                        </div>
+                                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                            <span class="text-sm">Science Quiz</span>
+                                            <span class="text-sm font-semibold text-yellow-600">72%</span>
+                                        </div>
+                                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                                            <span class="text-sm">English Essay</span>
+                                            <span class="text-sm font-semibold text-blue-600">90%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-8">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">AI-Generated Feedback</h3>
+                                <div class="bg-teal-50 border border-teal-200 rounded-lg p-6">
+                                    <p class="text-gray-700 mb-4">
+                                        <strong>Aarav</strong> has shown excellent progress in Mathematics and English.
+                                        His problem-solving skills have improved significantly.
+                                        However, he needs to focus more on Science concepts, particularly in the areas
+                                        of basic physics and chemistry.
+                                    </p>
+                                    <p class="text-gray-700">
+                                        <strong>Recommendations:</strong> Practice more science experiments, review
+                                        chapter summaries, and participate actively in class discussions.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between items-center">
+                                <button
+                                    class="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-200">
+                                    Send Feedback
+                                </button>
+                                <div class="space-x-4">
+                                    <button
+                                        class="bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-6 rounded-lg transition duration-200">
+                                        Export PDF
+                                    </button>
+                                    <button
+                                        class="bg-blue-100 hover:bg-blue-200 text-blue-700 font-semibold py-3 px-6 rounded-lg transition duration-200">
+                                        Email Parents
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Progress Tracker Screen -->
+                <div id="progressScreen" class="hidden flex-1 p-8">
+                    <div class="max-w-6xl mx-auto">
+                        <h1 class="text-3xl font-bold text-gray-800 mb-8">Student Progress</h1>
+
+                        <div class="bg-white rounded-xl shadow-lg p-8">
+                            <div class="mb-8">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Select Student</h3>
+                                <select
+                                    class="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <option>Aarav Sharma</option>
+                                    <option>Priya Patel</option>
+                                    <option>Rohan Kumar</option>
+                                    <option>Ananya Singh</option>
+                                </select>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                                <div class="bg-indigo-50 rounded-lg p-6">
+                                    <h4 class="font-semibold text-indigo-800 mb-4">Attendance</h4>
+                                    <div class="text-center">
+                                        <div class="text-3xl font-bold text-indigo-600 mb-2">92%</div>
+                                        <div class="w-full bg-indigo-200 rounded-full h-2">
+                                            <div class="bg-indigo-600 h-2 rounded-full" style="width: 92%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-green-50 rounded-lg p-6">
+                                    <h4 class="font-semibold text-green-800 mb-4">Test Scores</h4>
+                                    <div class="space-y-2">
+                                        <div class="flex justify-between">
+                                            <span class="text-sm">Math</span>
+                                            <span class="text-sm font-semibold">85%</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm">Science</span>
+                                            <span class="text-sm font-semibold">78%</span>
+                                        </div>
+                                        <div class="flex justify-between">
+                                            <span class="text-sm">English</span>
+                                            <span class="text-sm font-semibold">90%</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-purple-50 rounded-lg p-6">
+                                    <h4 class="font-semibold text-purple-800 mb-4">Skill Development</h4>
+                                    <div class="space-y-3">
+                                        <div>
+                                            <div class="flex justify-between text-sm mb-1">
+                                                <span>Problem Solving</span>
+                                                <span>80%</span>
+                                            </div>
+                                            <div class="w-full bg-purple-200 rounded-full h-2">
+                                                <div class="bg-purple-600 h-2 rounded-full" style="width: 80%"></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="flex justify-between text-sm mb-1">
+                                                <span>Communication</span>
+                                                <span>85%</span>
+                                            </div>
+                                            <div class="w-full bg-purple-200 rounded-full h-2">
+                                                <div class="bg-purple-600 h-2 rounded-full" style="width: 85%"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <div class="space-x-4">
+                                    <button
+                                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200">
+                                        Export to CSV
+                                    </button>
+                                    <button
+                                        class="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200">
+                                        Export to PDF
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teacher Connect Screen -->
+                <div id="connectScreen" class="hidden flex-1 p-8">
+                    <div class="max-w-6xl mx-auto">
+                        <h1 class="text-3xl font-bold text-gray-800 mb-8">Connect with Teachers</h1>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                            <div class="lg:col-span-2">
+                                <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Teachers Using Sahayak AI</h3>
+                                    <div class="space-y-4">
+                                        <div
+                                            class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+                                            <div class="flex items-center space-x-3">
+                                                <div
+                                                    class="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center">
+                                                    <span class="text-pink-600 font-semibold">MS</span>
+                                                </div>
+                                                <div>
+                                                    <p class="font-medium text-gray-800">Mrs. Sharma</p>
+                                                    <p class="text-sm text-gray-500">Mathematics Teacher • Delhi Public
+                                                        School</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex space-x-2">
+                                                <button
+                                                    class="bg-blue-100 hover:bg-blue-200 text-blue-700 px-3 py-1 rounded text-sm">Gmail</button>
+                                                <button
+                                                    class="bg-green-100 hover:bg-green-200 text-green-700 px-3 py-1 rounded text-sm">Chat</button>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+                                            <div class="flex items-center space-x-3">
+                                                <div
+                                                    class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                                    <span class="text-blue-600 font-semibold">RK</span>
+                                                </div>
+                                                <div>
+                                                    <p class="font-medium text-gray-800">Mr. Rajesh Kumar</p>
+                                                    <p class="text-sm text-gray-500">Science Teacher • St. Mary's School
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="flex space-x-2">
+                                                <button
+                                                    class="bg-blue-100 hover:bg-blue-200 text-blue-700 px-3 py-1 rounded text-sm">Gmail</button>
+                                                <button
+                                                    class="bg-green-100 hover:bg-green-200 text-green-700 px-3 py-1 rounded text-sm">Chat</button>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            class="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+                                            <div class="flex items-center space-x-3">
+                                                <div
+                                                    class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                                                    <span class="text-purple-600 font-semibold">AP</span>
+                                                </div>
+                                                <div>
+                                                    <p class="font-medium text-gray-800">Ms. Anita Patel</p>
+                                                    <p class="text-sm text-gray-500">English Teacher • Modern School</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex space-x-2">
+                                                <button
+                                                    class="bg-blue-100 hover:bg-blue-200 text-blue-700 px-3 py-1 rounded text-sm">Gmail</button>
+                                                <button
+                                                    class="bg-green-100 hover:bg-green-200 text-green-700 px-3 py-1 rounded text-sm">Chat</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white rounded-xl shadow-lg p-6">
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Chat & Share</h3>
+                                    <div class="bg-gray-50 rounded-lg p-4 h-64 overflow-y-auto mb-4">
+                                        <div class="space-y-3">
+                                            <div class="flex items-start space-x-2">
+                                                <div
+                                                    class="w-6 h-6 bg-pink-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                                    <span class="text-pink-600 text-xs font-semibold">MS</span>
+                                                </div>
+                                                <div class="bg-white rounded-lg p-2 max-w-xs">
+                                                    <p class="text-sm">Hi! I just created a great fractions worksheet.
+                                                        Would you like me to share it?</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start space-x-2 justify-end">
+                                                <div class="bg-blue-500 text-white rounded-lg p-2 max-w-xs">
+                                                    <p class="text-sm">Yes, please! That would be very helpful.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <input type="text" placeholder="Type your message..."
+                                            class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        <button
+                                            class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg">Send</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="bg-white rounded-xl shadow-lg p-6">
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Create Group</h3>
+                                    <div class="space-y-4">
+                                        <input type="text" placeholder="Group Name"
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        <textarea placeholder="Group Description" rows="3"
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                                        <select
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                            <option>Select Subject</option>
+                                            <option>Mathematics</option>
+                                            <option>Science</option>
+                                            <option>English</option>
+                                            <option>Social Studies</option>
+                                        </select>
+                                        <button
+                                            class="w-full bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-200">
+                                            Create Group
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="bg-white rounded-xl shadow-lg p-6 mt-6">
+                                    <h3 class="text-lg font-semibold text-gray-800 mb-4">My Groups</h3>
+                                    <div class="space-y-2">
+                                        <div class="p-3 bg-gray-50 rounded-lg">
+                                            <p class="font-medium text-gray-800">Math Teachers Delhi</p>
+                                            <p class="text-sm text-gray-500">12 members</p>
+                                        </div>
+                                        <div class="p-3 bg-gray-50 rounded-lg">
+                                            <p class="font-medium text-gray-800">CBSE Grade 5</p>
+                                            <p class="text-sm text-gray-500">8 members</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reminders & Test Scheduler Screen -->
+                <div id="schedulerScreen" class="hidden flex-1 p-8">
+                    <div class="max-w-6xl mx-auto">
+                        <h1 class="text-3xl font-bold text-gray-800 mb-8">Reminders & Tests</h1>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div class="bg-white rounded-xl shadow-lg p-6">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-6">Add Test Schedule</h3>
+                                <div class="space-y-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Test Name</label>
+                                        <input type="text" placeholder="e.g., Mathematics Unit Test"
+                                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Date</label>
+                                            <input type="date"
+                                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Time</label>
+                                            <input type="time"
+                                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                                            <select
+                                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                                <option>Mathematics</option>
+                                                <option>Science</option>
+                                                <option>English</option>
+                                                <option>Social Studies</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium text-gray-700 mb-2">Grade</label>
+                                            <select
+                                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                                <option>Grade 1</option>
+                                                <option>Grade 2</option>
+                                                <option>Grade 3</option>
+                                                <option>Grade 4</option>
+                                                <option>Grade 5</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Reminder
+                                            Settings</label>
+                                        <div class="space-y-2">
+                                            <label class="flex items-center">
+                                                <input type="checkbox" class="text-yellow-600">
+                                                <span class="ml-2 text-sm">Send reminder to students (1 day
+                                                    before)</span>
+                                            </label>
+                                            <label class="flex items-center">
+                                                <input type="checkbox" class="text-yellow-600">
+                                                <span class="ml-2 text-sm">Send reminder to parents (2 days
+                                                    before)</span>
+                                            </label>
+                                            <label class="flex items-center">
+                                                <input type="checkbox" class="text-yellow-600">
+                                                <span class="ml-2 text-sm">Personal reminder (Gmail)</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <button
+                                        class="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200">
+                                        Schedule Test
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-xl shadow-lg p-6">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-6">Upcoming Tests & Reminders</h3>
+                                <div class="space-y-4">
+                                    <div class="border border-gray-200 rounded-lg p-4">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <h4 class="font-medium text-gray-800">Mathematics Unit Test</h4>
+                                            <span
+                                                class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded">Tomorrow</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mb-2">Grade 5 • 10:00 AM</p>
+                                        <div class="flex space-x-2">
+                                            <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">Students
+                                                Notified</span>
+                                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Parents
+                                                Notified</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="border border-gray-200 rounded-lg p-4">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <h4 class="font-medium text-gray-800">Science Quiz</h4>
+                                            <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">Next
+                                                Week</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mb-2">Grade 4 • 2:00 PM</p>
+                                        <div class="flex space-x-2">
+                                            <span
+                                                class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded">Pending</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="border border-gray-200 rounded-lg p-4">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <h4 class="font-medium text-gray-800">English Essay Submission</h4>
+                                            <span class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">Due
+                                                Today</span>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mb-2">Grade 3 • All Day</p>
+                                        <div class="flex space-x-2">
+                                            <span
+                                                class="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">Overdue</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation functions
+
+        function showLanding() {
+            hideAll();
+            document.getElementById('landingPage').classList.remove('hidden');
+        }
+
+        function showSignUp() {
+            hideAll();
+            document.getElementById('signUpPage').classList.remove('hidden');
+        }
+
+        function showLogin() {
+            hideAll();
+            document.getElementById('loginPage').classList.remove('hidden');
+        }
+
+        function showDashboard() {
+            hideAll();
+            document.getElementById('dashboard').classList.remove('hidden');
+            showScreen('chatScreen'); // Default screen
+        }
+
+        function showScreen(screenKey) {
+            const screens = {
+                chat: 'chatScreen',
+                worksheet: 'worksheetScreen',
+                game: 'gameScreen',
+                syllabus: 'syllabusScreen',
+                grading: 'gradingScreen',
+                feedback: 'feedbackScreen',
+                progress: 'progressScreen',
+                connect: 'connectScreen',
+                scheduler: 'schedulerScreen',
+            };
+
+            Object.values(screens).forEach(screenId => {
+                const el = document.getElementById(screenId);
+                if (el) el.classList.add('hidden');
+            });
+
+            const selected = document.getElementById(screens[screenKey]);
+            if (selected) selected.classList.remove('hidden');
+        }
+
+        function toggleUserMenu() {
+            document.getElementById('userMenu').classList.toggle('hidden');
+        }
+
+        function hideAll() {
+            ['landingPage', 'signUpPage', 'loginPage', 'dashboard'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.add('hidden');
+            });
+        }
+
+        // Show landing page on first load
+        showLanding();
+    </script>
+</body>
+
+</html>
